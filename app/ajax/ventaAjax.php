@@ -1,4 +1,9 @@
 <?php
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+// file_put_contents('debug.log', print_r($_POST, true), FILE_APPEND);
+
 	
 	require_once "../../config/app.php";
 	require_once "../views/inc/session_start.php";
@@ -18,6 +23,11 @@
 		/*--------- Agregar producto a carrito ---------*/
 		if($_POST['modulo_venta']=="agregar_producto"){
 			echo $insVenta->agregarProductoCarritoControlador();
+        }
+
+		/*--------- Agregar producto sin inventario a carrito ---------*/
+		if($_POST['modulo_venta']=="agregarProductoSinInventario"){
+			echo $insVenta->agregarProductoSinInventarioCarritoControlador();
         }
 
         /*--------- Remover producto de carrito ---------*/
