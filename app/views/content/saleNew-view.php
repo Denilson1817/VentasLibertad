@@ -62,7 +62,7 @@
                                     <button type="button" class="button is-link is-light" onclick="print_ticket('<?php echo APP_URL . "app/pdf/ticket.php?code=" . $_SESSION['venta_codigo_factura']; ?>')">
                                         <i class="fas fa-receipt fa-2x"></i> &nbsp;
                                         Imprimir ticket de venta
-                                        </buttona>
+                                        </button>
                                 </div>
                                 <div class="column has-text-centered">
                                     <button type="button" class="button is-link is-light" onclick="print_invoice('<?php echo APP_URL . "app/pdf/invoice.php?code=" . $_SESSION['venta_codigo_factura']; ?>')">
@@ -244,6 +244,19 @@
                         <div class="control mb-5">
                             <label>Total pagado por cliente <?php echo CAMPO_OBLIGATORIO; ?></label>
                             <input class="input" type="text" name="venta_abono" id="venta_abono" value="0.00" pattern="[0-9.]{1,25}" maxlength="25">
+                        </div>
+
+                        <div class="control mb-5">
+                            <label>Método de pago <?php echo CAMPO_OBLIGATORIO; ?></label>
+                            <div class="select">
+                                <select name="tipo_pago" id="tipo_pago" required>
+                                    <option value="">Seleccione una opción</option>
+                                    <option value="transferencia">Transferencia</option>
+                                    <option value="efectivo">Efectivo</option>
+                                    <option value="debito">Débito</option>
+                                    <option value="credito">Crédito</option>
+                                </select>
+                            </div>
                         </div>
 
                         <div class="control mb-5">

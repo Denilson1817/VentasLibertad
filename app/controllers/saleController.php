@@ -552,6 +552,9 @@ class saleController extends mainModel
 
 		$caja = $this->limpiarCadena($_POST['venta_caja']);
 		$venta_pagado = $this->limpiarCadena($_POST['venta_abono']);
+		$tipo_pago = $this->limpiarCadena($_POST['tipo_pago']);
+
+		
 
 		/*== Comprobando integridad de los datos ==*/
 		if ($this->verificarDatos("[0-9.]{1,25}", $venta_pagado)) {
@@ -564,6 +567,18 @@ class saleController extends mainModel
 			return json_encode($alerta);
 			exit();
 		}
+
+		// if ($this->verificarDatos("[0-9.]{1,25}", $tipo_pago)) {
+		// 	$alerta = [
+		// 		"tipo" => "simple",
+		// 		"titulo" => "Ocurrió un error inesperado",
+		// 		"texto" => "El total pagado por el cliente no coincide con el formato solicitado",
+		// 		"icono" => "error"
+		// 	];
+		// 	return json_encode($alerta);
+		// 	exit();
+		// }
+
 
 		if ($_SESSION['venta_total'] <= 0 || (!isset($_SESSION['datos_producto_venta']) && count($_SESSION['datos_producto_venta']) <= 0)) {
 			$alerta = [
@@ -776,6 +791,11 @@ class saleController extends mainModel
 				"campo_nombre" => "caja_id",
 				"campo_marcador" => ":Caja",
 				"campo_valor" => $caja
+			],
+			[
+				"campo_nombre" => "tipo_pago",
+				"campo_marcador" => ":TipoPago",
+				"campo_valor" => $tipo_pago
 			]
 		];
 

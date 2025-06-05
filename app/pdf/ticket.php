@@ -108,6 +108,13 @@
         $pdf->Cell(22,5,iconv("UTF-8", "ISO-8859-1","CAMBIO"),0,0,'C');
         $pdf->Cell(32,5,iconv("UTF-8", "ISO-8859-1",MONEDA_SIMBOLO.number_format($datos_venta['venta_cambio'],MONEDA_DECIMALES,MONEDA_SEPARADOR_DECIMAL,MONEDA_SEPARADOR_MILLAR).' '.MONEDA_NOMBRE),0,0,'C');
 
+        $pdf->Ln(5);
+
+        $pdf->Cell(18,5,iconv("UTF-8", "ISO-8859-1",""),0,0,'C');
+        $pdf->Cell(22,5,iconv("UTF-8", "ISO-8859-1","METODO DE PAGO"),0,0,'C');
+        $pdf->Cell(32,5,iconv("UTF-8", "ISO-8859-1","".$datos_venta['tipo_pago']),0,0,'C');
+        
+
         $pdf->Ln(10);
 
         $pdf->MultiCell(0,5,iconv("UTF-8", "ISO-8859-1","*** Precios de productos incluyen impuestos. Para poder realizar un reclamo o devolución debe de presentar este ticket ***"),0,'C',false);
